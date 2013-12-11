@@ -1,0 +1,39 @@
+digraph test_simple {
+	debut_start [shape=box];
+	debut_finish [shape=box];
+	fin_start [shape=box];
+	fin_finish [shape=box];
+
+	debut_notStarted [label="debut_notStarted : 1"];
+	debut_started [label="debut_started : 0"];
+	debut_inProgress [label="debut_inProgress : 0"];
+	debut_finished [label="debut_finished : 0"];
+	debut_ressourceWaiting [label="debut_ressourceWaiting : 0"];
+	debut_ressourceAvailable [label="debut_ressourceAvailable : 1"];
+	debut_ressourceReturned [label="debut_ressourceReturned : 0"];
+	fin_notStarted [label="fin_notStarted : 1"];
+	fin_started [label="fin_started : 0"];
+	fin_inProgress [label="fin_inProgress : 0"];
+	fin_finished [label="fin_finished : 0"];
+	fin_ressourceWaiting [label="fin_ressourceWaiting : 0"];
+	fin_ressourceAvailable [label="fin_ressourceAvailable : 1"];
+	fin_ressourceReturned [label="fin_ressourceReturned : 0"];
+
+debut_notStarted -> debut_start;
+debut_start -> debut_started;
+debut_start -> debut_inProgress;
+debut_inProgress -> debut_finish;
+debut_finish -> debut_finished;
+debut_ressourceAvailable -> debut_start;
+debut_finish -> debut_ressourceReturned;
+fin_notStarted -> fin_start;
+fin_start -> fin_started;
+fin_start -> fin_inProgress;
+fin_inProgress -> fin_finish;
+fin_finish -> fin_finished;
+fin_ressourceAvailable -> fin_start;
+fin_finish -> fin_ressourceReturned;
+edge [color=red];
+debut_started -> fin_start;
+edge [color=black];
+}
