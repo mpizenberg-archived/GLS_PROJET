@@ -1,0 +1,33 @@
+grammar fr.enseeiht.PETRI with org.eclipse.xtext.common.Terminals
+
+generate pETRI "http://www.enseeiht.fr/PETRI"
+
+PetriNet :
+	'petrinet' name=ID '{'
+	    petriNetElements+=PetriNetElement*
+	'}'
+	;
+
+PetriNetElement :
+	Node
+	| Arc
+	;
+		
+Node :
+	Place
+	| Transition
+	;
+
+Place :
+	'place' name=ID ('('marking=INT')')?
+	;
+
+Transition :
+	'transition' name=ID
+	;
+	
+Arc :
+	'arc' ('('multiplicity=INT')')? (readOnly ?= 'r')?
+		'from' predecessor=[Node]
+		'to' successor=[Node]
+	;
