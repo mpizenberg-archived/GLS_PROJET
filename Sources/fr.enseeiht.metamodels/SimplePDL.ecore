@@ -50,7 +50,7 @@
         eType="#//WorkSequence" eOpposite="#//WorkSequence/predecessor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="needSets" upperBound="-1"
-        eType="#//NeedSet" containment="true"/>
+        eType="#//NeedSet" eOpposite="#//NeedSet/wd"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkSequence" eSuperTypes="#//ProcessElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -96,6 +96,8 @@
         eType="#//Ressource"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="needSet" lowerBound="1"
+        eType="#//NeedSet" eOpposite="#//NeedSet/needs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NeedSet" eSuperTypes="#//ProcessElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -106,6 +108,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="needs" lowerBound="1" upperBound="-1"
-        eType="#//Need" containment="true"/>
+        eType="#//Need" eOpposite="#//Need/needSet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wd" lowerBound="1" eType="#//WorkDefinition"
+        eOpposite="#//WorkDefinition/needSets"/>
   </eClassifiers>
 </ecore:EPackage>
