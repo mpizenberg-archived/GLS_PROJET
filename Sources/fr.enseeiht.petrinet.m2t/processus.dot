@@ -1,0 +1,126 @@
+digraph processus {
+	Conception_start [shape=box];
+	Conception_finish [shape=box];
+	RedactionDoc_start [shape=box];
+	RedactionDoc_finish [shape=box];
+	Developpement_start [shape=box];
+	Developpement_finish [shape=box];
+	RedactionTests_start [shape=box];
+	RedactionTests_finish [shape=box];
+	conception_take [shape=box];
+	conception_free [shape=box];
+	conception_makeAvailable [shape=box];
+	redactionDoc_take [shape=box];
+	redactionDoc_free [shape=box];
+	redactionDoc_makeAvailable [shape=box];
+	developpement_take [shape=box];
+	developpement_free [shape=box];
+	developpement_makeAvailable [shape=box];
+	redactionTests_take [shape=box];
+	redactionTests_free [shape=box];
+	redactionTests_makeAvailable [shape=box];
+
+	Conception_notStarted [label="1"]
+	Conception_started [label=" "]
+	Conception_inProgress [label=" "]
+	Conception_finished [label=" "]
+	Conception_ressourceWaiting [label="1"]
+	Conception_ressourceAvailable [label=" "]
+	Conception_ressourceReturned [label=" "]
+	RedactionDoc_notStarted [label="1"]
+	RedactionDoc_started [label=" "]
+	RedactionDoc_inProgress [label=" "]
+	RedactionDoc_finished [label=" "]
+	RedactionDoc_ressourceWaiting [label="1"]
+	RedactionDoc_ressourceAvailable [label=" "]
+	RedactionDoc_ressourceReturned [label=" "]
+	Developpement_notStarted [label="1"]
+	Developpement_started [label=" "]
+	Developpement_inProgress [label=" "]
+	Developpement_finished [label=" "]
+	Developpement_ressourceWaiting [label="1"]
+	Developpement_ressourceAvailable [label=" "]
+	Developpement_ressourceReturned [label=" "]
+	RedactionTests_notStarted [label="1"]
+	RedactionTests_started [label=" "]
+	RedactionTests_inProgress [label=" "]
+	RedactionTests_finished [label=" "]
+	RedactionTests_ressourceWaiting [label="1"]
+	RedactionTests_ressourceAvailable [label=" "]
+	RedactionTests_ressourceReturned [label=" "]
+	concepteur [label="3"]
+	developpeur [label="2"]
+	machine [label="4"]
+	redacteur [label="1"]
+	testeur [label="2"]
+	conception [label=" "]
+	redactionDoc [label=" "]
+	developpement [label=" "]
+	redactionTests [label=" "]
+
+	Conception_notStarted -> Conception_start;
+	Conception_start -> Conception_started;
+	Conception_start -> Conception_inProgress;
+	Conception_inProgress -> Conception_finish;
+	Conception_finish -> Conception_finished;
+	RedactionDoc_notStarted -> RedactionDoc_start;
+	RedactionDoc_start -> RedactionDoc_started;
+	RedactionDoc_start -> RedactionDoc_inProgress;
+	RedactionDoc_inProgress -> RedactionDoc_finish;
+	RedactionDoc_finish -> RedactionDoc_finished;
+	Developpement_notStarted -> Developpement_start;
+	Developpement_start -> Developpement_started;
+	Developpement_start -> Developpement_inProgress;
+	Developpement_inProgress -> Developpement_finish;
+	Developpement_finish -> Developpement_finished;
+	RedactionTests_notStarted -> RedactionTests_start;
+	RedactionTests_start -> RedactionTests_started;
+	RedactionTests_start -> RedactionTests_inProgress;
+	RedactionTests_inProgress -> RedactionTests_finish;
+	RedactionTests_finish -> RedactionTests_finished;
+	Conception_started -> RedactionDoc_start;
+	Conception_finished -> RedactionDoc_finish;
+	Conception_finished -> Developpement_start;
+	Conception_started -> RedactionTests_start;
+	Developpement_finished -> RedactionTests_finish;
+	Conception_ressourceWaiting -> conception_take;
+	conception_take -> conception;
+	conception -> conception_makeAvailable;
+	conception_makeAvailable -> Conception_ressourceAvailable;
+	conception -> conception_free;
+	Conception_ressourceReturned -> conception_free;
+	RedactionDoc_ressourceWaiting -> redactionDoc_take;
+	redactionDoc_take -> redactionDoc;
+	redactionDoc -> redactionDoc_makeAvailable;
+	redactionDoc_makeAvailable -> RedactionDoc_ressourceAvailable;
+	redactionDoc -> redactionDoc_free;
+	RedactionDoc_ressourceReturned -> redactionDoc_free;
+	Developpement_ressourceWaiting -> developpement_take;
+	developpement_take -> developpement;
+	developpement -> developpement_makeAvailable;
+	developpement_makeAvailable -> Developpement_ressourceAvailable;
+	developpement -> developpement_free;
+	Developpement_ressourceReturned -> developpement_free;
+	RedactionTests_ressourceWaiting -> redactionTests_take;
+	redactionTests_take -> redactionTests;
+	redactionTests -> redactionTests_makeAvailable;
+	redactionTests_makeAvailable -> RedactionTests_ressourceAvailable;
+	redactionTests -> redactionTests_free;
+	RedactionTests_ressourceReturned -> redactionTests_free;
+	concepteur -> conception_take [label="2"] ;
+	conception_free -> concepteur [label="2"] ;
+	machine -> conception_take [label="2"] ;
+	conception_free -> machine [label="2"] ;
+	machine -> redactionDoc_take;
+	redactionDoc_free -> machine;
+	redacteur -> redactionDoc_take;
+	redactionDoc_free -> redacteur;
+	developpeur -> developpement_take [label="2"] ;
+	developpement_free -> developpeur [label="2"] ;
+	machine -> developpement_take [label="3"] ;
+	developpement_free -> machine [label="3"] ;
+	machine -> redactionTests_take [label="2"] ;
+	redactionTests_free -> machine [label="2"] ;
+	testeur -> redactionTests_take;
+	redactionTests_free -> testeur;
+}
