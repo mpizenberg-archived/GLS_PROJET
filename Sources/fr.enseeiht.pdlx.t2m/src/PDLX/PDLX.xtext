@@ -1,0 +1,51 @@
+grammar fr.enseeiht.PDLX with org.eclipse.xtext.common.Terminals
+
+generate pDLX "http://www.enseeiht.fr/PDLX"
+
+Process :
+	'process' name=ID '{'
+	    processElements+=ProcessElement*
+	'}'
+	;
+
+ProcessElement :
+	WorkDefinition
+	| WorkSequence
+	| Guidance
+	| Ressource
+	| Need
+	| NeedSet
+	;
+		
+WorkDefinition :
+	'wd' name=ID
+	;
+
+Ressource :
+	'r' name=ID '('quantity=INT')'
+	;
+	
+Need :
+	'n' r=[Ressource] '('quantity=INT')' 'set' needSet=[NeedSet]
+	;
+	
+NeedSet :
+	'n' name=ID 'wd' wd=[WorkDefinition]
+	;
+	
+WorkSequence :
+	'ws' linkType=WorkSequenceType
+		'from' predecessor=[WorkDefinition]
+		'to' successor=[WorkDefinition]
+	;
+	
+Guidance:
+	text=STRING
+	;
+
+enum WorkSequenceType :
+	start2start = 's2s'
+	| finish2start = 'f2s'
+	| start2finish = 's2f'
+	| finish2finish = 'f2f'
+	;
