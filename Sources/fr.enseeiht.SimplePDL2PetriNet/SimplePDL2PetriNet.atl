@@ -87,7 +87,20 @@ rule WorkDefinition2PetriNet {
 		p_ressourceReturned: petrinet!Place(
 				name <- wd.name + '_ressourceReturned',
 				marking <- 0,
-				petriNet <- wd.getProcess())
+				petriNet <- wd.getProcess()),
+		-- NOUVEAUX ATCS LIES AUX BESOINS
+		a_availaibleToStart: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- p_ressourceAvailable,
+				successor <- t_start),
+		a_finishToReturned: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_finish,
+				successor <- p_ressourceReturned)
 }
 
 -- Traduire une WorkSequence en un motif sur le réseau de Petri

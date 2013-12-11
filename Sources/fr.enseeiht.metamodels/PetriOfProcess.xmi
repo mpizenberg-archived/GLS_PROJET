@@ -1,125 +1,133 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet/1.0" name="processus">
   <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.6" name="Conception_notStarted" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.56 //@petriNetElements.59" linksToPredecessor="//@petriNetElements.7" name="Conception_started"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.64 //@petriNetElements.67" linksToPredecessor="//@petriNetElements.7" name="Conception_started"/>
   <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.9" linksToPredecessor="//@petriNetElements.8" name="Conception_inProgress"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.57 //@petriNetElements.58" linksToPredecessor="//@petriNetElements.10" name="Conception_finished"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.7 //@petriNetElements.8" linksToPredecessor="//@petriNetElements.6" name="Conception_start"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.10" linksToPredecessor="//@petriNetElements.9" name="Conception_finish"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.65 //@petriNetElements.66" linksToPredecessor="//@petriNetElements.10" name="Conception_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.7 //@petriNetElements.8" linksToPredecessor="//@petriNetElements.6 //@petriNetElements.14" name="Conception_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.10 //@petriNetElements.15" linksToPredecessor="//@petriNetElements.9" name="Conception_finish"/>
   <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.0" successor="//@petriNetElements.4" multiplicity="1"/>
   <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.4" successor="//@petriNetElements.1" multiplicity="1"/>
   <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.4" successor="//@petriNetElements.2" multiplicity="1"/>
   <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.2" successor="//@petriNetElements.5" multiplicity="1"/>
   <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.5" successor="//@petriNetElements.3" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.70" name="Conception_ressourceWaiting" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.73" name="Conception_ressourceAvailable"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.75" name="Conception_ressourceReturned"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.20" name="RedactionDoc_notStarted" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.21" name="RedactionDoc_started"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.23" linksToPredecessor="//@petriNetElements.22" name="RedactionDoc_inProgress"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.24" name="RedactionDoc_finished"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.21 //@petriNetElements.22" linksToPredecessor="//@petriNetElements.20 //@petriNetElements.56" name="RedactionDoc_start"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.24" linksToPredecessor="//@petriNetElements.23 //@petriNetElements.57" name="RedactionDoc_finish"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.14" successor="//@petriNetElements.18" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.18" successor="//@petriNetElements.15" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.18" successor="//@petriNetElements.16" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.16" successor="//@petriNetElements.19" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.19" successor="//@petriNetElements.17" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.80" name="RedactionDoc_ressourceWaiting" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.83" name="RedactionDoc_ressourceAvailable"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.85" name="RedactionDoc_ressourceReturned"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.34" name="Developpement_notStarted" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.35" name="Developpement_started"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.37" linksToPredecessor="//@petriNetElements.36" name="Developpement_inProgress"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.60" linksToPredecessor="//@petriNetElements.38" name="Developpement_finished"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.35 //@petriNetElements.36" linksToPredecessor="//@petriNetElements.34 //@petriNetElements.58" name="Developpement_start"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.38" linksToPredecessor="//@petriNetElements.37" name="Developpement_finish"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.28" successor="//@petriNetElements.32" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.32" successor="//@petriNetElements.29" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.32" successor="//@petriNetElements.30" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.30" successor="//@petriNetElements.33" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.33" successor="//@petriNetElements.31" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.90" name="Developpement_ressourceWaiting" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.93" name="Developpement_ressourceAvailable"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.95" name="Developpement_ressourceReturned"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.48" name="RedactionTests_notStarted" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.49" name="RedactionTests_started"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.51" linksToPredecessor="//@petriNetElements.50" name="RedactionTests_inProgress"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.52" name="RedactionTests_finished"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.49 //@petriNetElements.50" linksToPredecessor="//@petriNetElements.48 //@petriNetElements.59" name="RedactionTests_start"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.52" linksToPredecessor="//@petriNetElements.51 //@petriNetElements.60" name="RedactionTests_finish"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.42" successor="//@petriNetElements.46" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.46" successor="//@petriNetElements.43" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.46" successor="//@petriNetElements.44" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.44" successor="//@petriNetElements.47" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.47" successor="//@petriNetElements.45" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.100" name="RedactionTests_ressourceWaiting" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.103" name="RedactionTests_ressourceAvailable"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.105" name="RedactionTests_ressourceReturned"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.1" successor="//@petriNetElements.18" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.3" successor="//@petriNetElements.19" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.3" successor="//@petriNetElements.32" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.1" successor="//@petriNetElements.46" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.31" successor="//@petriNetElements.47" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.106" linksToPredecessor="//@petriNetElements.107" name="concepteur" marking="3"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.114" linksToPredecessor="//@petriNetElements.115" name="developpeur" marking="2"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.108 //@petriNetElements.110 //@petriNetElements.116 //@petriNetElements.118" linksToPredecessor="//@petriNetElements.109 //@petriNetElements.111 //@petriNetElements.117 //@petriNetElements.119" name="machine" marking="4"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.112" linksToPredecessor="//@petriNetElements.113" name="redacteur" marking="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.120" linksToPredecessor="//@petriNetElements.121" name="testeur" marking="2"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.72 //@petriNetElements.74" linksToPredecessor="//@petriNetElements.71" name="conception"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.71" linksToPredecessor="//@petriNetElements.70 //@petriNetElements.106 //@petriNetElements.108" name="conception_take"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.107 //@petriNetElements.109" linksToPredecessor="//@petriNetElements.74 //@petriNetElements.75" name="conception_free"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.73" linksToPredecessor="//@petriNetElements.72" name="conception_makeAvailable"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.11" successor="//@petriNetElements.67" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.67" successor="//@petriNetElements.66" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.66" successor="//@petriNetElements.69" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.69" successor="//@petriNetElements.12" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.66" successor="//@petriNetElements.68" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.13" successor="//@petriNetElements.68" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.82 //@petriNetElements.84" linksToPredecessor="//@petriNetElements.81" name="redactionDoc"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.81" linksToPredecessor="//@petriNetElements.80 //@petriNetElements.110 //@petriNetElements.112" name="redactionDoc_take"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.111 //@petriNetElements.113" linksToPredecessor="//@petriNetElements.84 //@petriNetElements.85" name="redactionDoc_free"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.83" linksToPredecessor="//@petriNetElements.82" name="redactionDoc_makeAvailable"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.25" successor="//@petriNetElements.77" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.77" successor="//@petriNetElements.76" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.76" successor="//@petriNetElements.79" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.79" successor="//@petriNetElements.26" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.76" successor="//@petriNetElements.78" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.27" successor="//@petriNetElements.78" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.92 //@petriNetElements.94" linksToPredecessor="//@petriNetElements.91" name="developpement"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.91" linksToPredecessor="//@petriNetElements.90 //@petriNetElements.114 //@petriNetElements.116" name="developpement_take"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.115 //@petriNetElements.117" linksToPredecessor="//@petriNetElements.94 //@petriNetElements.95" name="developpement_free"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.93" linksToPredecessor="//@petriNetElements.92" name="developpement_makeAvailable"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.39" successor="//@petriNetElements.87" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.87" successor="//@petriNetElements.86" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.86" successor="//@petriNetElements.89" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.89" successor="//@petriNetElements.40" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.86" successor="//@petriNetElements.88" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.41" successor="//@petriNetElements.88" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.102 //@petriNetElements.104" linksToPredecessor="//@petriNetElements.101" name="redactionTests"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.101" linksToPredecessor="//@petriNetElements.100 //@petriNetElements.118 //@petriNetElements.120" name="redactionTests_take"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.119 //@petriNetElements.121" linksToPredecessor="//@petriNetElements.104 //@petriNetElements.105" name="redactionTests_free"/>
-  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.103" linksToPredecessor="//@petriNetElements.102" name="redactionTests_makeAvailable"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.53" successor="//@petriNetElements.97" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.97" successor="//@petriNetElements.96" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.96" successor="//@petriNetElements.99" multiplicity="1" readOnly="true"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.99" successor="//@petriNetElements.54" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.96" successor="//@petriNetElements.98" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.55" successor="//@petriNetElements.98" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.61" successor="//@petriNetElements.67" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.68" successor="//@petriNetElements.61" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.63" successor="//@petriNetElements.67" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.68" successor="//@petriNetElements.63" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.63" successor="//@petriNetElements.77" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.78" successor="//@petriNetElements.63" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.64" successor="//@petriNetElements.77" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.78" successor="//@petriNetElements.64" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.62" successor="//@petriNetElements.87" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.88" successor="//@petriNetElements.62" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.63" successor="//@petriNetElements.87" multiplicity="3"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.88" successor="//@petriNetElements.63" multiplicity="3"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.63" successor="//@petriNetElements.97" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.98" successor="//@petriNetElements.63" multiplicity="2"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.65" successor="//@petriNetElements.97" multiplicity="1"/>
-  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.98" successor="//@petriNetElements.65" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.78" name="Conception_ressourceWaiting" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.14" linksToPredecessor="//@petriNetElements.81" name="Conception_ressourceAvailable"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.83" linksToPredecessor="//@petriNetElements.15" name="Conception_ressourceReturned"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.12" successor="//@petriNetElements.4" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.5" successor="//@petriNetElements.13" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.22" name="RedactionDoc_notStarted" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.23" name="RedactionDoc_started"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.25" linksToPredecessor="//@petriNetElements.24" name="RedactionDoc_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.26" name="RedactionDoc_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.23 //@petriNetElements.24" linksToPredecessor="//@petriNetElements.22 //@petriNetElements.30 //@petriNetElements.64" name="RedactionDoc_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.26 //@petriNetElements.31" linksToPredecessor="//@petriNetElements.25 //@petriNetElements.65" name="RedactionDoc_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.16" successor="//@petriNetElements.20" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.20" successor="//@petriNetElements.17" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.20" successor="//@petriNetElements.18" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.18" successor="//@petriNetElements.21" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.21" successor="//@petriNetElements.19" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.88" name="RedactionDoc_ressourceWaiting" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.30" linksToPredecessor="//@petriNetElements.91" name="RedactionDoc_ressourceAvailable"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.93" linksToPredecessor="//@petriNetElements.31" name="RedactionDoc_ressourceReturned"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.28" successor="//@petriNetElements.20" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.21" successor="//@petriNetElements.29" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.38" name="Developpement_notStarted" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.39" name="Developpement_started"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.41" linksToPredecessor="//@petriNetElements.40" name="Developpement_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.68" linksToPredecessor="//@petriNetElements.42" name="Developpement_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.39 //@petriNetElements.40" linksToPredecessor="//@petriNetElements.38 //@petriNetElements.46 //@petriNetElements.66" name="Developpement_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.42 //@petriNetElements.47" linksToPredecessor="//@petriNetElements.41" name="Developpement_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.32" successor="//@petriNetElements.36" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.36" successor="//@petriNetElements.33" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.36" successor="//@petriNetElements.34" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.34" successor="//@petriNetElements.37" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.37" successor="//@petriNetElements.35" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.98" name="Developpement_ressourceWaiting" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.46" linksToPredecessor="//@petriNetElements.101" name="Developpement_ressourceAvailable"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.103" linksToPredecessor="//@petriNetElements.47" name="Developpement_ressourceReturned"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.44" successor="//@petriNetElements.36" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.37" successor="//@petriNetElements.45" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.54" name="RedactionTests_notStarted" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.55" name="RedactionTests_started"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.57" linksToPredecessor="//@petriNetElements.56" name="RedactionTests_inProgress"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToPredecessor="//@petriNetElements.58" name="RedactionTests_finished"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.55 //@petriNetElements.56" linksToPredecessor="//@petriNetElements.54 //@petriNetElements.62 //@petriNetElements.67" name="RedactionTests_start"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.58 //@petriNetElements.63" linksToPredecessor="//@petriNetElements.57 //@petriNetElements.68" name="RedactionTests_finish"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.48" successor="//@petriNetElements.52" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.52" successor="//@petriNetElements.49" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.52" successor="//@petriNetElements.50" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.50" successor="//@petriNetElements.53" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.53" successor="//@petriNetElements.51" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.108" name="RedactionTests_ressourceWaiting" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.62" linksToPredecessor="//@petriNetElements.111" name="RedactionTests_ressourceAvailable"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.113" linksToPredecessor="//@petriNetElements.63" name="RedactionTests_ressourceReturned"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.60" successor="//@petriNetElements.52" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.53" successor="//@petriNetElements.61" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.1" successor="//@petriNetElements.20" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.3" successor="//@petriNetElements.21" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.3" successor="//@petriNetElements.36" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.1" successor="//@petriNetElements.52" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.35" successor="//@petriNetElements.53" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.114" linksToPredecessor="//@petriNetElements.115" name="concepteur" marking="3"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.122" linksToPredecessor="//@petriNetElements.123" name="developpeur" marking="2"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.116 //@petriNetElements.118 //@petriNetElements.124 //@petriNetElements.126" linksToPredecessor="//@petriNetElements.117 //@petriNetElements.119 //@petriNetElements.125 //@petriNetElements.127" name="machine" marking="4"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.120" linksToPredecessor="//@petriNetElements.121" name="redacteur" marking="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.128" linksToPredecessor="//@petriNetElements.129" name="testeur" marking="2"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.80 //@petriNetElements.82" linksToPredecessor="//@petriNetElements.79" name="conception"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.79" linksToPredecessor="//@petriNetElements.78 //@petriNetElements.114 //@petriNetElements.116" name="conception_take"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.115 //@petriNetElements.117" linksToPredecessor="//@petriNetElements.82 //@petriNetElements.83" name="conception_free"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.81" linksToPredecessor="//@petriNetElements.80" name="conception_makeAvailable"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.11" successor="//@petriNetElements.75" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.75" successor="//@petriNetElements.74" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.74" successor="//@petriNetElements.77" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.77" successor="//@petriNetElements.12" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.74" successor="//@petriNetElements.76" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.13" successor="//@petriNetElements.76" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.90 //@petriNetElements.92" linksToPredecessor="//@petriNetElements.89" name="redactionDoc"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.89" linksToPredecessor="//@petriNetElements.88 //@petriNetElements.118 //@petriNetElements.120" name="redactionDoc_take"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.119 //@petriNetElements.121" linksToPredecessor="//@petriNetElements.92 //@petriNetElements.93" name="redactionDoc_free"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.91" linksToPredecessor="//@petriNetElements.90" name="redactionDoc_makeAvailable"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.27" successor="//@petriNetElements.85" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.85" successor="//@petriNetElements.84" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.84" successor="//@petriNetElements.87" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.87" successor="//@petriNetElements.28" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.84" successor="//@petriNetElements.86" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.29" successor="//@petriNetElements.86" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.100 //@petriNetElements.102" linksToPredecessor="//@petriNetElements.99" name="developpement"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.99" linksToPredecessor="//@petriNetElements.98 //@petriNetElements.122 //@petriNetElements.124" name="developpement_take"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.123 //@petriNetElements.125" linksToPredecessor="//@petriNetElements.102 //@petriNetElements.103" name="developpement_free"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.101" linksToPredecessor="//@petriNetElements.100" name="developpement_makeAvailable"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.43" successor="//@petriNetElements.95" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.95" successor="//@petriNetElements.94" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.94" successor="//@petriNetElements.97" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.97" successor="//@petriNetElements.44" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.94" successor="//@petriNetElements.96" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.45" successor="//@petriNetElements.96" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Place" linksToSuccessor="//@petriNetElements.110 //@petriNetElements.112" linksToPredecessor="//@petriNetElements.109" name="redactionTests"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.109" linksToPredecessor="//@petriNetElements.108 //@petriNetElements.126 //@petriNetElements.128" name="redactionTests_take"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.127 //@petriNetElements.129" linksToPredecessor="//@petriNetElements.112 //@petriNetElements.113" name="redactionTests_free"/>
+  <petriNetElements xsi:type="petrinet:Transition" linksToSuccessor="//@petriNetElements.111" linksToPredecessor="//@petriNetElements.110" name="redactionTests_makeAvailable"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.59" successor="//@petriNetElements.105" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.105" successor="//@petriNetElements.104" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.104" successor="//@petriNetElements.107" multiplicity="1" readOnly="true"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.107" successor="//@petriNetElements.60" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.104" successor="//@petriNetElements.106" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.61" successor="//@petriNetElements.106" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.69" successor="//@petriNetElements.75" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.76" successor="//@petriNetElements.69" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.71" successor="//@petriNetElements.75" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.76" successor="//@petriNetElements.71" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.71" successor="//@petriNetElements.85" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.86" successor="//@petriNetElements.71" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.72" successor="//@petriNetElements.85" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.86" successor="//@petriNetElements.72" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.70" successor="//@petriNetElements.95" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.96" successor="//@petriNetElements.70" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.71" successor="//@petriNetElements.95" multiplicity="3"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.96" successor="//@petriNetElements.71" multiplicity="3"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.71" successor="//@petriNetElements.105" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.106" successor="//@petriNetElements.71" multiplicity="2"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.73" successor="//@petriNetElements.105" multiplicity="1"/>
+  <petriNetElements xsi:type="petrinet:Arc" predecessor="//@petriNetElements.106" successor="//@petriNetElements.73" multiplicity="1"/>
 </petrinet:PetriNet>
