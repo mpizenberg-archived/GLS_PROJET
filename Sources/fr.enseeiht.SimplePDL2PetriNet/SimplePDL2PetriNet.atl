@@ -1,0 +1,198 @@
+module SimplePDL2PetriNet;
+create OUT: petrinet from  IN: simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une référence opposite
+-- avait été placée entre Process et ProcessElement
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first();
+
+-- Traduire un Process en un PetriNet de même nom
+rule Process2PetriNet {
+	from p: simplepdl!Process
+	to pn: petrinet!PetriNet (name <- p.name)
+}
+
+-- Traduire une WorkDefinition en un motif sur le réseau de Petri
+rule WorkDefinition2PetriNet {
+	from wd: simplepdl!WorkDefinition
+	to
+		-- PLACES d'une WorkDefinition
+		p_notStarted: petrinet!Place(
+				name <- wd.name + '_notStarted',
+				marking <- 1,
+				petriNet <- wd.getProcess()),
+		p_started: petrinet!Place(
+				name <- wd.name + '_started',
+				marking <- 0,
+				petriNet <- wd.getProcess()),
+		p_inProgress: petrinet!Place(
+				name <- wd.name + '_inProgress',
+				marking <- 0,
+				petriNet <- wd.getProcess()),
+		p_finished: petrinet!Place(
+				name <- wd.name + '_finished',
+				marking <- 0,
+				petriNet <- wd.getProcess()),
+		-- TRANSITIONS
+		t_start: petrinet!Transition(
+				petriNet <- wd.getProcess(),
+				name <- wd.name + '_start'),
+		t_finish: petrinet!Transition(
+				petriNet <- wd.getProcess(),
+				name <- wd.name + '_finish'),
+		-- ARCS
+		a_notStartedToStart: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- p_notStarted,
+				successor <- t_start),
+		a_startToStarted: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_start,
+				successor <- p_started),
+		a_startToInProgress: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_start,
+				successor <- p_inProgress),
+		a_inProgressToFinish: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- p_inProgress,
+				successor <- t_finish),
+		a_finishTofinished: petrinet!Arc(
+				petriNet <- wd.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_finish,
+				successor <- p_finished),
+		-- NOUVELLES PLACES LIEES AUX BESOINS
+		p_ressourceWaiting: petrinet!Place(
+				name <- wd.name + '_ressourceWaiting',
+				marking <- if((wd.needSets->size())=0) then 0 else 1 endif,
+				petriNet <- wd.getProcess()),
+		p_ressourceAvailable: petrinet!Place(
+				name <- wd.name + '_ressourceAvailable',
+				marking <- if((wd.needSets->size())=0) then 1 else 0 endif,
+				petriNet <- wd.getProcess()),
+		p_ressourceReturned: petrinet!Place(
+				name <- wd.name + '_ressourceReturned',
+				marking <- 0,
+				petriNet <- wd.getProcess())
+}
+
+-- Traduire une WorkSequence en un motif sur le réseau de Petri
+rule WorkSequence2PetriNet {
+	from ws: simplepdl!WorkSequence
+	to
+		a_ws: petrinet!Arc(
+				petriNet <- ws.getProcess(),
+				readOnly <- true,
+				multiplicity <- 1,
+				predecessor <- thisModule.resolveTemp(ws.predecessor,
+					if((ws.linkType = #finishToStart) or (ws.linkType = #finishToFinish))
+						then 'p_finished'
+						else 'p_started'
+					endif),
+				successor <- thisModule.resolveTemp(ws.successor,
+					if((ws.linkType = #finishToStart) or (ws.linkType = #startToStart))
+						then 't_start'
+						else 't_finish'
+					endif)
+				)
+}
+
+-- Traduire une Ressource en un motif sur le réseau de Petri
+rule Ressource2PetriNet {
+	from ressource: simplepdl!Ressource
+	to
+		p_ressource: petrinet!Place(
+				name <- ressource.name,
+				marking <- ressource.quantity,
+				petriNet <- ressource.getProcess())
+}
+
+-- Traduire un NeedSet en un motif sur le réseau de Petri
+rule NeedSet2PetriNet {
+	from needSet: simplepdl!NeedSet
+	to
+		-- PLACE d'un ensemble de besoins (NeedSet)
+		p_needSet: petrinet!Place(
+				name <- needSet.name,
+				marking <- 0,
+				petriNet <- needSet.getProcess()),
+		-- TRANSITIONS
+		t_take: petrinet!Transition(
+				petriNet <- needSet.getProcess(),
+				name <- needSet.name + '_take'),
+		t_return: petrinet!Transition(
+				petriNet <- needSet.getProcess(),
+				name <- needSet.name + '_free'),
+		t_makeAvailable: petrinet!Transition(
+				petriNet <- needSet.getProcess(),
+				name <- needSet.name + '_makeAvailable'),
+		-- ARCS
+		a_waitToTake: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- thisModule.resolveTemp(needSet.wd,'p_ressourceWaiting'),
+				successor <- t_take),
+		a_takeToNeed: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_take,
+				successor <- p_needSet),
+		a_needToMakeAvailable: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- true,
+				multiplicity <- 1,
+				predecessor <- p_needSet,
+				successor <- t_makeAvailable),
+		a_makeAvailableToAvailable: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- t_makeAvailable,
+				successor <- thisModule.resolveTemp(needSet.wd,'p_ressourceAvailable')),
+		a_needToReturn: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- p_needSet,
+				successor <- t_return),
+		a_returnedToReturn: petrinet!Arc(
+				petriNet <- needSet.getProcess(),
+				readOnly <- false,
+				multiplicity <- 1,
+				predecessor <- thisModule.resolveTemp(needSet.wd,'p_ressourceReturned'),
+				successor <- t_return)
+}
+
+-- Traduire un besoin (Need) en un motif sur le réseau de Petri
+rule Need2PetriNet {
+	from need: simplepdl!Need
+	to
+		a_take: petrinet!Arc(
+				petriNet <- need.getProcess(),
+				readOnly <- false,
+				multiplicity <- need.quantity,
+				predecessor <- thisModule.resolveTemp(need.ressource,'p_ressource'),
+				successor <- thisModule.resolveTemp(need.needSet,'t_take')),
+		a_return: petrinet!Arc(
+				petriNet <- need.getProcess(),
+				readOnly <- false,
+				multiplicity <- need.quantity,
+				predecessor <- thisModule.resolveTemp(need.needSet,'t_return'),
+				successor <- thisModule.resolveTemp(need.ressource,'p_ressource'))
+}
