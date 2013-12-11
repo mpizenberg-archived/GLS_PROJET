@@ -1,0 +1,31 @@
+process test {
+	wd conception
+	wd redactionDoc
+	wd developpement
+	wd redactionTests
+	
+	ws s2s from conception to redactionDoc
+	ws f2f from conception to redactionDoc
+	ws f2s from conception to developpement
+	ws s2s from conception to redactionTests
+	ws f2f from developpement to redactionTests
+	
+	r concepteur (3)
+	r developpeur (2)
+	r machine (4)
+	r redacteur (1)
+	r testeur (2)
+	
+	set set_conception wd conception
+		n concepteur(2) set set_conception
+		n machine(2) set set_conception
+	set set_redactionDoc wd redactionDoc
+		n machine(1) set set_redactionDoc
+		n redacteur(1) set set_redactionDoc
+	set set_developpement wd developpement
+		n developpeur(2) set set_developpement
+		n machine(3) set set_developpement
+	set set_redactionTests wd redactionTests
+		n testeur(2) set set_redactionTests
+		n machine(2) set set_redactionTests
+}

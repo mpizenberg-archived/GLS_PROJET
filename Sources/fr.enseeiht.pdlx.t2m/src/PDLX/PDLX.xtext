@@ -26,11 +26,11 @@ Ressource :
 	;
 	
 Need :
-	'n' r=[Ressource] '('quantity=INT')' 'set' needSet=[NeedSet]
+	'n' ressource=[Ressource] '('quantity=INT')' 'set' needSet=[NeedSet]
 	;
 	
 NeedSet :
-	'n' name=ID 'wd' wd=[WorkDefinition]
+	'set' name=ID 'wd' wd=[WorkDefinition]
 	;
 	
 WorkSequence :
