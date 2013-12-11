@@ -1,0 +1,9 @@
+tr debut_start debut_notStarted debut_ressourceAvailable -> debut_started debut_inProgress
+tr debut_finish debut_inProgress -> debut_finished debut_ressourceReturned
+tr fin_start fin_notStarted fin_ressourceAvailable debut_started?1 -> fin_started fin_inProgress
+tr fin_finish fin_inProgress -> fin_finished fin_ressourceReturned
+pl debut_notStarted (1)
+pl debut_ressourceAvailable (1)
+pl fin_notStarted (1)
+pl fin_ressourceAvailable (1)
+net test_simple

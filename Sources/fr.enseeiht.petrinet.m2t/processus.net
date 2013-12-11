@@ -1,0 +1,34 @@
+tr Conception_start Conception_notStarted Conception_ressourceAvailable -> Conception_started Conception_inProgress
+tr Conception_finish Conception_inProgress -> Conception_finished Conception_ressourceReturned
+tr RedactionDoc_start RedactionDoc_notStarted RedactionDoc_ressourceAvailable Conception_started?1 -> RedactionDoc_started RedactionDoc_inProgress
+tr RedactionDoc_finish RedactionDoc_inProgress Conception_finished?1 -> RedactionDoc_finished RedactionDoc_ressourceReturned
+tr Developpement_start Developpement_notStarted Developpement_ressourceAvailable Conception_finished?1 -> Developpement_started Developpement_inProgress
+tr Developpement_finish Developpement_inProgress -> Developpement_finished Developpement_ressourceReturned
+tr RedactionTests_start RedactionTests_notStarted RedactionTests_ressourceAvailable Conception_started?1 -> RedactionTests_started RedactionTests_inProgress
+tr RedactionTests_finish RedactionTests_inProgress Developpement_finished?1 -> RedactionTests_finished RedactionTests_ressourceReturned
+tr conception_take Conception_ressourceWaiting concepteur*2 machine*2 -> conception
+tr conception_free conception Conception_ressourceReturned -> concepteur*2 machine*2
+tr conception_makeAvailable conception?1 -> Conception_ressourceAvailable
+tr redactionDoc_take RedactionDoc_ressourceWaiting machine redacteur -> redactionDoc
+tr redactionDoc_free redactionDoc RedactionDoc_ressourceReturned -> machine redacteur
+tr redactionDoc_makeAvailable redactionDoc?1 -> RedactionDoc_ressourceAvailable
+tr developpement_take Developpement_ressourceWaiting developpeur*2 machine*3 -> developpement
+tr developpement_free developpement Developpement_ressourceReturned -> developpeur*2 machine*3
+tr developpement_makeAvailable developpement?1 -> Developpement_ressourceAvailable
+tr redactionTests_take RedactionTests_ressourceWaiting machine*2 testeur -> redactionTests
+tr redactionTests_free redactionTests RedactionTests_ressourceReturned -> machine*2 testeur
+tr redactionTests_makeAvailable redactionTests?1 -> RedactionTests_ressourceAvailable
+pl Conception_notStarted (1)
+pl Conception_ressourceWaiting (1)
+pl RedactionDoc_notStarted (1)
+pl RedactionDoc_ressourceWaiting (1)
+pl Developpement_notStarted (1)
+pl Developpement_ressourceWaiting (1)
+pl RedactionTests_notStarted (1)
+pl RedactionTests_ressourceWaiting (1)
+pl concepteur (3)
+pl developpeur (2)
+pl machine (4)
+pl redacteur (1)
+pl testeur (2)
+net processus
