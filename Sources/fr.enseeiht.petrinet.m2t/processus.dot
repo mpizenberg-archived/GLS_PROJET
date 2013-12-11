@@ -20,107 +20,125 @@ digraph processus {
 	redactionTests_free [shape=box];
 	redactionTests_makeAvailable [shape=box];
 
-	Conception_notStarted [label="1"]
-	Conception_started [label=" "]
-	Conception_inProgress [label=" "]
-	Conception_finished [label=" "]
-	Conception_ressourceWaiting [label="1"]
-	Conception_ressourceAvailable [label=" "]
-	Conception_ressourceReturned [label=" "]
-	RedactionDoc_notStarted [label="1"]
-	RedactionDoc_started [label=" "]
-	RedactionDoc_inProgress [label=" "]
-	RedactionDoc_finished [label=" "]
-	RedactionDoc_ressourceWaiting [label="1"]
-	RedactionDoc_ressourceAvailable [label=" "]
-	RedactionDoc_ressourceReturned [label=" "]
-	Developpement_notStarted [label="1"]
-	Developpement_started [label=" "]
-	Developpement_inProgress [label=" "]
-	Developpement_finished [label=" "]
-	Developpement_ressourceWaiting [label="1"]
-	Developpement_ressourceAvailable [label=" "]
-	Developpement_ressourceReturned [label=" "]
-	RedactionTests_notStarted [label="1"]
-	RedactionTests_started [label=" "]
-	RedactionTests_inProgress [label=" "]
-	RedactionTests_finished [label=" "]
-	RedactionTests_ressourceWaiting [label="1"]
-	RedactionTests_ressourceAvailable [label=" "]
-	RedactionTests_ressourceReturned [label=" "]
-	concepteur [label="3"]
-	developpeur [label="2"]
-	machine [label="4"]
-	redacteur [label="1"]
-	testeur [label="2"]
-	conception [label=" "]
-	redactionDoc [label=" "]
-	developpement [label=" "]
-	redactionTests [label=" "]
+	Conception_notStarted [label="Conception_notStarted : 1"];
+	Conception_started [label="Conception_started : 0"];
+	Conception_inProgress [label="Conception_inProgress : 0"];
+	Conception_finished [label="Conception_finished : 0"];
+	Conception_ressourceWaiting [label="Conception_ressourceWaiting : 1"];
+	Conception_ressourceAvailable [label="Conception_ressourceAvailable : 0"];
+	Conception_ressourceReturned [label="Conception_ressourceReturned : 0"];
+	RedactionDoc_notStarted [label="RedactionDoc_notStarted : 1"];
+	RedactionDoc_started [label="RedactionDoc_started : 0"];
+	RedactionDoc_inProgress [label="RedactionDoc_inProgress : 0"];
+	RedactionDoc_finished [label="RedactionDoc_finished : 0"];
+	RedactionDoc_ressourceWaiting [label="RedactionDoc_ressourceWaiting : 1"];
+	RedactionDoc_ressourceAvailable [label="RedactionDoc_ressourceAvailable : 0"];
+	RedactionDoc_ressourceReturned [label="RedactionDoc_ressourceReturned : 0"];
+	Developpement_notStarted [label="Developpement_notStarted : 1"];
+	Developpement_started [label="Developpement_started : 0"];
+	Developpement_inProgress [label="Developpement_inProgress : 0"];
+	Developpement_finished [label="Developpement_finished : 0"];
+	Developpement_ressourceWaiting [label="Developpement_ressourceWaiting : 1"];
+	Developpement_ressourceAvailable [label="Developpement_ressourceAvailable : 0"];
+	Developpement_ressourceReturned [label="Developpement_ressourceReturned : 0"];
+	RedactionTests_notStarted [label="RedactionTests_notStarted : 1"];
+	RedactionTests_started [label="RedactionTests_started : 0"];
+	RedactionTests_inProgress [label="RedactionTests_inProgress : 0"];
+	RedactionTests_finished [label="RedactionTests_finished : 0"];
+	RedactionTests_ressourceWaiting [label="RedactionTests_ressourceWaiting : 1"];
+	RedactionTests_ressourceAvailable [label="RedactionTests_ressourceAvailable : 0"];
+	RedactionTests_ressourceReturned [label="RedactionTests_ressourceReturned : 0"];
+	concepteur [label="concepteur : 3"];
+	developpeur [label="developpeur : 2"];
+	machine [label="machine : 4"];
+	redacteur [label="redacteur : 1"];
+	testeur [label="testeur : 2"];
+	conception [label="conception : 0"];
+	redactionDoc [label="redactionDoc : 0"];
+	developpement [label="developpement : 0"];
+	redactionTests [label="redactionTests : 0"];
 
-	Conception_notStarted -> Conception_start;
-	Conception_start -> Conception_started;
-	Conception_start -> Conception_inProgress;
-	Conception_inProgress -> Conception_finish;
-	Conception_finish -> Conception_finished;
-	RedactionDoc_notStarted -> RedactionDoc_start;
-	RedactionDoc_start -> RedactionDoc_started;
-	RedactionDoc_start -> RedactionDoc_inProgress;
-	RedactionDoc_inProgress -> RedactionDoc_finish;
-	RedactionDoc_finish -> RedactionDoc_finished;
-	Developpement_notStarted -> Developpement_start;
-	Developpement_start -> Developpement_started;
-	Developpement_start -> Developpement_inProgress;
-	Developpement_inProgress -> Developpement_finish;
-	Developpement_finish -> Developpement_finished;
-	RedactionTests_notStarted -> RedactionTests_start;
-	RedactionTests_start -> RedactionTests_started;
-	RedactionTests_start -> RedactionTests_inProgress;
-	RedactionTests_inProgress -> RedactionTests_finish;
-	RedactionTests_finish -> RedactionTests_finished;
-	Conception_started -> RedactionDoc_start;
-	Conception_finished -> RedactionDoc_finish;
-	Conception_finished -> Developpement_start;
-	Conception_started -> RedactionTests_start;
-	Developpement_finished -> RedactionTests_finish;
-	Conception_ressourceWaiting -> conception_take;
-	conception_take -> conception;
-	conception -> conception_makeAvailable;
-	conception_makeAvailable -> Conception_ressourceAvailable;
-	conception -> conception_free;
-	Conception_ressourceReturned -> conception_free;
-	RedactionDoc_ressourceWaiting -> redactionDoc_take;
-	redactionDoc_take -> redactionDoc;
-	redactionDoc -> redactionDoc_makeAvailable;
-	redactionDoc_makeAvailable -> RedactionDoc_ressourceAvailable;
-	redactionDoc -> redactionDoc_free;
-	RedactionDoc_ressourceReturned -> redactionDoc_free;
-	Developpement_ressourceWaiting -> developpement_take;
-	developpement_take -> developpement;
-	developpement -> developpement_makeAvailable;
-	developpement_makeAvailable -> Developpement_ressourceAvailable;
-	developpement -> developpement_free;
-	Developpement_ressourceReturned -> developpement_free;
-	RedactionTests_ressourceWaiting -> redactionTests_take;
-	redactionTests_take -> redactionTests;
-	redactionTests -> redactionTests_makeAvailable;
-	redactionTests_makeAvailable -> RedactionTests_ressourceAvailable;
-	redactionTests -> redactionTests_free;
-	RedactionTests_ressourceReturned -> redactionTests_free;
-	concepteur -> conception_take [label="2"] ;
-	conception_free -> concepteur [label="2"] ;
-	machine -> conception_take [label="2"] ;
-	conception_free -> machine [label="2"] ;
-	machine -> redactionDoc_take;
-	redactionDoc_free -> machine;
-	redacteur -> redactionDoc_take;
-	redactionDoc_free -> redacteur;
-	developpeur -> developpement_take [label="2"] ;
-	developpement_free -> developpeur [label="2"] ;
-	machine -> developpement_take [label="3"] ;
-	developpement_free -> machine [label="3"] ;
-	machine -> redactionTests_take [label="2"] ;
-	redactionTests_free -> machine [label="2"] ;
-	testeur -> redactionTests_take;
-	redactionTests_free -> testeur;
+Conception_notStarted -> Conception_start;
+Conception_start -> Conception_started;
+Conception_start -> Conception_inProgress;
+Conception_inProgress -> Conception_finish;
+Conception_finish -> Conception_finished;
+RedactionDoc_notStarted -> RedactionDoc_start;
+RedactionDoc_start -> RedactionDoc_started;
+RedactionDoc_start -> RedactionDoc_inProgress;
+RedactionDoc_inProgress -> RedactionDoc_finish;
+RedactionDoc_finish -> RedactionDoc_finished;
+Developpement_notStarted -> Developpement_start;
+Developpement_start -> Developpement_started;
+Developpement_start -> Developpement_inProgress;
+Developpement_inProgress -> Developpement_finish;
+Developpement_finish -> Developpement_finished;
+RedactionTests_notStarted -> RedactionTests_start;
+RedactionTests_start -> RedactionTests_started;
+RedactionTests_start -> RedactionTests_inProgress;
+RedactionTests_inProgress -> RedactionTests_finish;
+RedactionTests_finish -> RedactionTests_finished;
+edge [color=red];
+Conception_started -> RedactionDoc_start;
+edge [color=black];
+edge [color=red];
+Conception_finished -> RedactionDoc_finish;
+edge [color=black];
+edge [color=red];
+Conception_finished -> Developpement_start;
+edge [color=black];
+edge [color=red];
+Conception_started -> RedactionTests_start;
+edge [color=black];
+edge [color=red];
+Developpement_finished -> RedactionTests_finish;
+edge [color=black];
+Conception_ressourceWaiting -> conception_take;
+conception_take -> conception;
+edge [color=red];
+conception -> conception_makeAvailable;
+edge [color=black];
+conception_makeAvailable -> Conception_ressourceAvailable;
+conception -> conception_free;
+Conception_ressourceReturned -> conception_free;
+RedactionDoc_ressourceWaiting -> redactionDoc_take;
+redactionDoc_take -> redactionDoc;
+edge [color=red];
+redactionDoc -> redactionDoc_makeAvailable;
+edge [color=black];
+redactionDoc_makeAvailable -> RedactionDoc_ressourceAvailable;
+redactionDoc -> redactionDoc_free;
+RedactionDoc_ressourceReturned -> redactionDoc_free;
+Developpement_ressourceWaiting -> developpement_take;
+developpement_take -> developpement;
+edge [color=red];
+developpement -> developpement_makeAvailable;
+edge [color=black];
+developpement_makeAvailable -> Developpement_ressourceAvailable;
+developpement -> developpement_free;
+Developpement_ressourceReturned -> developpement_free;
+RedactionTests_ressourceWaiting -> redactionTests_take;
+redactionTests_take -> redactionTests;
+edge [color=red];
+redactionTests -> redactionTests_makeAvailable;
+edge [color=black];
+redactionTests_makeAvailable -> RedactionTests_ressourceAvailable;
+redactionTests -> redactionTests_free;
+RedactionTests_ressourceReturned -> redactionTests_free;
+concepteur -> conception_take [label="2"] ;
+conception_free -> concepteur [label="2"] ;
+machine -> conception_take [label="2"] ;
+conception_free -> machine [label="2"] ;
+machine -> redactionDoc_take;
+redactionDoc_free -> machine;
+redacteur -> redactionDoc_take;
+redactionDoc_free -> redacteur;
+developpeur -> developpement_take [label="2"] ;
+developpement_free -> developpeur [label="2"] ;
+machine -> developpement_take [label="3"] ;
+developpement_free -> machine [label="3"] ;
+machine -> redactionTests_take [label="2"] ;
+redactionTests_free -> machine [label="2"] ;
+testeur -> redactionTests_take;
+redactionTests_free -> testeur;
 }

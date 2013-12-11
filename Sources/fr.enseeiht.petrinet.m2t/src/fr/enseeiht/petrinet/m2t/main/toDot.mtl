@@ -7,17 +7,19 @@
 [comment @main/]
 [file (petriNet.name.concat('.dot'), false, 'UTF-8')]
 digraph [petriNet.name/] {
-	[for (tr : Transition | petriNet.petriNetElements->getTransitions())]
+[for (tr : Transition | petriNet.petriNetElements->getTransitions())]
 	[tr.name/] ['box'.getShape()/];
-	[/for]
+[/for]
 
-	[for (pl : Place | petriNet.petriNetElements->getPlaces())]
-	[pl.name/] [if (pl.marking > 0)][pl.marking.toString().getLabel()/][else][' '.getLabel()/][/if]
-	[/for]
+[for (pl : Place | petriNet.petriNetElements->getPlaces())]
+	[pl.name/] [(pl.name + ' : ' + pl.marking.toString()).getLabel()/];
+[/for]
 
-	[for (arc : Arc | petriNet.petriNetElements->getArcs())]
-	[arc.predecessor.name/] -> [arc.successor.name/][if (arc.multiplicity > 1)] [arc.multiplicity.toString().getLabel()/] [/if];
-	[/for]
+[for (arc : Arc | petriNet.petriNetElements->getArcs())]
+[if (arc.readOnly)]edge ['red'.getColor()/];
+[/if][arc.predecessor.name/] -> [arc.successor.name/][if (arc.multiplicity > 1)] [arc.multiplicity.toString().getLabel()/] [/if];
+[if (arc.readOnly)]edge ['black'.getColor()/];
+[/if][/for]
 }
 [/file]
 [/template]
@@ -46,4 +48,8 @@ digraph [petriNet.name/] {
 
 [template public getShape(s : String)]
 ['['/]shape=[s/][']'/]
+[/template]
+
+[template public getColor(s : String)]
+['['/]color=[s/][']'/]
 [/template]
