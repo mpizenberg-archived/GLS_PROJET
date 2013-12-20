@@ -1,0 +1,23 @@
+Le langage utilisé par Acceleo (d'extension .mtl) est un langage de template.
+On construit bout par bout notre fichier texte à l'aide de boucles, de conditions et de requêtes.\\
+
+Voilà un exemple de boucle avec condition :
+\lstset{
+   language={}
+}
+\begin{lstlisting}
+[for (pl : Place | petriNet.petriNetElements->getPlaces())]
+[if (pl.marking > 0)]pl [pl.name/] ([pl.marking/])[/if]
+[/for]
+\end{lstlisting}
+
+Et voilà un exemple de requête pour récupérer les places d'un réseau de pétri :
+\begin{lstlisting}
+[query public getPlaces(elements : OrderedSet(PetriNetElement)) : OrderedSet(Place) = 
+   elements->select( e | e.oclIsTypeOf(Place) )
+      ->collect( e | e.oclAsType(Place) )
+      ->select( e | e.marking > 0 )
+      ->asOrderedSet()
+/]
+\end{lstlisting}
+

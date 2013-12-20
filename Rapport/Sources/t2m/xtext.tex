@@ -1,0 +1,93 @@
+Xtext permet de spécifier la syntaxe d'un fichier décrivant un modèle.
+Cette spécification permet également la construction automatique du métamodèle correspondant à la syntaxe concrète décrite.\\
+
+En fait, il apparait que le métamodèle construit est légèrement différents du métamodèle initial.
+Ceci est d'autant plus vrai que la syntaxe est simplifiée et s'éloigne de la structure du modèle.
+Ce n'est pas si grave, puisque l'on connait maintenant les outils permettant de faire des transformations M2M.\\
+
+Voilà à quoi ressemble la syntaxe d'un fichier xtext, ici le contenu du xtext pour petrinet :
+
+\lstset{
+   language={}
+}
+\begin{lstlisting}
+PetriNet :
+   'petrinet' name=ID '{'
+      petriNetElements+=PetriNetElement*
+   '}'
+   ;
+
+PetriNetElement :
+   Node
+   | Arc
+   ;
+
+Node :
+   Place
+   | Transition
+   ;
+
+Place :
+   'place' name=ID ('('marking=INT')')?
+   ;
+
+Transition :
+   'transition' name=ID
+   ;
+
+Arc :
+   'arc' ('('multiplicity=INT')')? (readOnly ?= 'r')?
+   'from' predecessor=[Node]
+   'to' successor=[Node]
+   ;
+\end{lstlisting}
+
+Le fichier xtext pour notre syntaxe pdlx (pdl extended for ressources) est donnée dans les sources.\\
+
+On donne ici un exemple en .pdlx :
+
+\begin{lstlisting}
+process test {
+   wd conception
+   wd redactionDoc
+   wd developpement
+   wd redactionTests
+
+   ws s2s from conception to redactionDoc
+   ws f2f from conception to redactionDoc
+   ws f2s from conception to developpement
+   ws s2s from conception to redactionTests
+   ws f2f from developpement to redactionTests
+
+   r concepteur (3)
+   r developpeur (2)
+   r machine (4)
+   r redacteur (1)
+   r testeur (2)
+
+   set set_conception wd conception
+      n concepteur(2) set set_conception
+      n machine(2) set set_conception
+   set set_redactionDoc wd redactionDoc
+      n machine(1) set set_redactionDoc
+      n redacteur(1) set set_redactionDoc
+   set set_developpement wd developpement
+      n developpeur(2) set set_developpement
+      n machine(3) set set_developpement
+   set set_redactionTests wd redactionTests
+      n testeur(2) set set_redactionTests
+      n machine(2) set set_redactionTests
+}
+\end{lstlisting}
+
+Et pour un fichier en .petri :
+
+\begin{lstlisting}
+petrinet petrinet1 {
+   place place1
+   place place2 (2)
+   transition transition1
+   arc r from place1 to transition1
+   arc (2) from transition1 to place2
+}
+\end{lstlisting}

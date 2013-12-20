@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="WD2petri.svg">
+   sodipodi:docname="WD2petri.svg"
+   inkscape:export-filename="/Documents/Matthieu/GIT/ENSEEIHT/GLS/WS_GLS_PROJET/GLS_PROJET/Rapport/Images/WD2petri.png"
+   inkscape:export-xdpi="82.035004"
+   inkscape:export-ydpi="82.035004">
   <defs
      id="defs4">
     <marker
@@ -153,7 +156,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="240.03171"
-     inkscape:cy="420.36637"
+     inkscape:cy="363.22352"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
