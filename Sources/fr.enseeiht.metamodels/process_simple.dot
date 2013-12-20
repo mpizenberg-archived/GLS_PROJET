@@ -1,0 +1,3 @@
+digraph processSimple {
+   debut -> fin [label="startToStart"];
+}
