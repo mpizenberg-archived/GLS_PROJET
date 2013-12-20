@@ -1,0 +1,133 @@
+t 165.0 605.0 Conception_start 0 w n
+p 675.0 145.0 RedactionDoc_notStarted 1 n
+p 870.0 180.0 RedactionDoc_started 0 e
+p 765.0 90.0 RedactionDoc_ressourceAvailable 0 n
+t 750.0 1120.0 Developpement_start e 0 w n {} ne
+t 1520.0 625.0 RedactionTests_start e 0 w n {} ne
+p 165.0 545.0 Conception_ressourceAvailable 0 n
+t 225.0 480.0 conception_makeAvailable 0 w n
+p 85.0 605.0 Conception_notStarted 1 n
+p 275.0 655.0 Conception_started 0 n
+p 165.0 675.0 Conception_inProgress 0 n
+t 165.0 730.0 Conception_finish 0 w n
+p 255.0 730.0 Conception_ressourceReturned 0 n
+p 165.0 800.0 Conception_finished 0 n
+p 750.0 1065.0 Developpement_ressourceAvailable 0 n
+t 800.0 1005.0 developpement_makeAvailable 0 w n
+p 690.0 1120.0 Developpement_notStarted 1 n
+p 750.0 1185.0 Developpement_inProgress 0 w
+t 750.0 1245.0 Developpement_finish w 0 w n {} ne
+p 750.0 1310.0 Developpement_finished 0 w
+p 840.0 1245.0 Developpement_ressourceReturned 0 n
+p 850.0 1160.0 Developpement_started 0 e
+t 765.0 145.0 RedactionDoc_start e 0 w n {} ne
+p 765.0 205.0 RedactionDoc_inProgress 0 w
+t 765.0 260.0 RedactionDoc_finish 0 w n
+p 855.0 260.0 RedactionDoc_ressourceReturned 0 e
+p 765.0 325.0 RedactionDoc_finished 0 n
+p 1520.0 570.0 RedactionTests_ressourceAvailable 0 e
+t 1575.0 505.0 redactionTests_makeAvailable n 0 w n {} ne
+p 1440.0 625.0 RedactionTests_notStarted 1 n
+p 1615.0 655.0 RedactionTests_started 0 e
+p 1520.0 695.0 RedactionTests_inProgress 0 e
+t 1520.0 750.0 RedactionTests_finish 0 w n
+p 1520.0 815.0 RedactionTests_finished 0 s
+p 1610.0 750.0 RedactionTests_ressourceReturned 0 e
+p 360.0 575.0 conception 0 n
+p 960.0 110.0 redactionDoc 0 n
+t 860.0 25.0 redactionDoc_makeAvailable 0 w n
+t 960.0 330.0 redactionDoc_free 0 w n
+t 1320.0 805.0 redactionTests_free 0 w n
+p 1320.0 570.0 redactionTests 0 n
+p 965.0 1065.0 developpement 0 n
+p 1150.0 1185.0 Developpement_ressourceWaiting 1 e
+t 1150.0 1065.0 developpement_take e 0 w n {} ne
+t 1195.0 570.0 redactionTests_take nw 0 w n {} ne
+p 1195.0 470.0 RedactionTests_ressourceWaiting 1 ne
+t 935.0 980.0 developpement_free 0 w n
+t 845.0 375.0 redactionDoc_take 0 w n
+p 885.0 670.0 machine 4 n
+p 465.0 825.0 Conception_ressourceWaiting 1 n
+t 465.0 570.0 conception_take ne 0 w n {} ne
+p 685.0 375.0 RedactionDoc_ressourceWaiting 1 s
+p 810.0 755.0 concepteur 3 n
+p 1005.0 760.0 developpeur 2 n
+p 790.0 585.0 redacteur 1 n
+p 980.0 590.0 testeur 2 n
+t 360.0 730.0 conception_free s 0 w n {} ne
+e Conception_ressourceAvailable Conception_start 1 n
+e Conception_notStarted Conception_start 1 n
+e Conception_start Conception_inProgress 1 n
+e Conception_start Conception_started 1 n
+e Conception_inProgress Conception_finish 1 n
+e Conception_finish Conception_ressourceReturned 1 n
+e Conception_finish Conception_finished 1 n
+e RedactionDoc_ressourceAvailable RedactionDoc_start 1 n
+e RedactionDoc_notStarted RedactionDoc_start 1 n
+e Conception_started RedactionDoc_start ?1 n
+e RedactionDoc_start RedactionDoc_inProgress 1 n
+e RedactionDoc_start RedactionDoc_started 1 n
+e RedactionDoc_inProgress RedactionDoc_finish 1 n
+e Conception_finished RedactionDoc_finish ?1 n
+e RedactionDoc_finish RedactionDoc_ressourceReturned 1 n
+e RedactionDoc_finish RedactionDoc_finished 1 n
+e Developpement_ressourceAvailable Developpement_start 1 n
+e Developpement_notStarted Developpement_start 1 n
+e Conception_finished Developpement_start ?1 n
+e Developpement_start Developpement_inProgress 1 n
+e Developpement_start Developpement_started 1 n
+e Developpement_inProgress Developpement_finish 1 n
+e Developpement_finish Developpement_ressourceReturned 1 n
+e Developpement_finish Developpement_finished 1 n
+e RedactionTests_ressourceAvailable RedactionTests_start 1 n
+e RedactionTests_notStarted RedactionTests_start 1 n
+e Conception_started RedactionTests_start ?1 n
+e RedactionTests_start RedactionTests_inProgress 1 n
+e RedactionTests_start RedactionTests_started 1 n
+e RedactionTests_inProgress RedactionTests_finish 1 n
+e Developpement_finished RedactionTests_finish ?1 n
+e RedactionTests_finish RedactionTests_ressourceReturned 1 n
+e RedactionTests_finish RedactionTests_finished 1 n
+e machine conception_take 2 n
+e concepteur conception_take 2 s
+e Conception_ressourceWaiting conception_take 1 n
+e conception_take conception 1 n
+e Conception_ressourceReturned conception_free 1 n
+e conception conception_free 1 n
+e conception_free machine 2 se
+e conception_free concepteur 2 nw
+e conception conception_makeAvailable ?1 n
+e conception_makeAvailable Conception_ressourceAvailable 1 n
+e redacteur redactionDoc_take 1 n
+e machine redactionDoc_take 1 n
+e RedactionDoc_ressourceWaiting redactionDoc_take 1 n
+e redactionDoc_take redactionDoc 1 n
+e RedactionDoc_ressourceReturned redactionDoc_free 1 n
+e redactionDoc redactionDoc_free 1 n
+e redactionDoc_free redacteur 1 n
+e redactionDoc_free machine 1 n
+e redactionDoc redactionDoc_makeAvailable ?1 n
+e redactionDoc_makeAvailable RedactionDoc_ressourceAvailable 1 n
+e machine developpement_take 3 n
+e developpeur developpement_take 2 n
+e Developpement_ressourceWaiting developpement_take 1 n
+e developpement_take developpement 1 n
+e Developpement_ressourceReturned developpement_free 1 n
+e developpement developpement_free 1 n
+e developpement_free machine 3 w
+e developpement_free developpeur 2 n
+e developpement developpement_makeAvailable ?1 n
+e developpement_makeAvailable Developpement_ressourceAvailable 1 n
+e testeur redactionTests_take 1 n
+e machine redactionTests_take 2 s
+e RedactionTests_ressourceWaiting redactionTests_take 1 n
+e redactionTests_take redactionTests 1 n
+e RedactionTests_ressourceReturned redactionTests_free 1 n
+e redactionTests redactionTests_free 1 n
+e redactionTests_free testeur 1 n
+e redactionTests_free machine 2 n
+e redactionTests redactionTests_makeAvailable ?1 n
+e redactionTests_makeAvailable RedactionTests_ressourceAvailable 1 n
+h processus
+
+

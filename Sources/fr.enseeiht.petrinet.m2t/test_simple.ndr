@@ -1,0 +1,34 @@
+t 160.0 150.0 debut_start e 0 w n {} ne
+p 160.0 260.0 debut_inProgress 0 w
+p 160.0 60.0 debut_ressourceAvailable 1 n
+p 65.0 150.0 debut_notStarted 1 n
+t 540.0 145.0 fin_start e 0 w n {} ne
+p 420.0 145.0 fin_notStarted 1 n
+p 540.0 50.0 fin_ressourceAvailable 1 n
+p 540.0 255.0 fin_inProgress 0 w
+t 160.0 345.0 debut_finish w 0 w n {} ne
+t 540.0 345.0 fin_finish w 0 w n {} ne
+p 660.0 345.0 fin_ressourceReturned 0 n
+p 540.0 435.0 fin_finished 0 nw
+p 160.0 440.0 debut_finished 0 nw
+p 295.0 345.0 debut_ressourceReturned 0 n
+p 330.0 230.0 debut_started 0 n
+p 730.0 225.0 fin_started 0 n
+e debut_ressourceAvailable debut_start 1 n
+e debut_notStarted debut_start 1 n
+e debut_start debut_inProgress 1 n
+e debut_start debut_started 1 n
+e debut_inProgress debut_finish 1 n
+e debut_finish debut_ressourceReturned 1 n
+e debut_finish debut_finished 1 n
+e fin_ressourceAvailable fin_start 1 n
+e fin_notStarted fin_start 1 n
+e debut_started fin_start ?1 n
+e fin_start fin_inProgress 1 n
+e fin_start fin_started 1 n
+e fin_inProgress fin_finish 1 n
+e fin_finish fin_ressourceReturned 1 n
+e fin_finish fin_finished 1 n
+h test_simple
+
+
