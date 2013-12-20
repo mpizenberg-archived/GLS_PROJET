@@ -26,12 +26,12 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="processElements" upperBound="-1"
-        eType="#//ProcessElement" containment="true"/>
+        eType="#//ProcessElement" containment="true" eOpposite="#//ProcessElement/process"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" lowerBound="1"
         eType="#//Process" changeable="false" volatile="true" transient="true" derived="true"
-        resolveProxies="false">
+        resolveProxies="false" eOpposite="#//Process/processElements">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="derivation" value="Process.allInstances()->select(p : Process | p.processElements->includes(self))->asSequence()->first()"/>
       </eAnnotations>
