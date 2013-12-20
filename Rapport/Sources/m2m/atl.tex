@@ -1,0 +1,41 @@
+On montre ici brièvement la syntaxe d'un fichier ATL avec quelques exemples :
+
+\lstset{
+   language={}
+}
+\begin{lstlisting}
+-- Traduire un Process en un PetriNet de même nom
+rule Process2PetriNet {
+   from p: simplepdl!Process
+   to pn: petrinet!PetriNet (name <- p.name)
+}
+\end{lstlisting}
+
+Les règles de transformation sont exprimées avec le mot-clé "rule".
+Les mots "from" et "to" permettent d'identifier les éléments de la transformation.
+
+
+\begin{lstlisting}
+-- Traduire une WorkSequence en un motif sur le réseau de Petri
+rule WorkSequence2PetriNet {
+   from ws: simplepdl!WorkSequence
+   to
+      a_ws: petrinet!Arc(
+         petriNet <- ws.getProcess(),
+         readOnly <- true,
+         multiplicity <- 1,
+         predecessor <- thisModule.resolveTemp(ws.predecessor,
+            if((ws.linkType = #finishToStart) or (ws.linkType = #finishToFinish))
+               then 'p_finished'
+               else 'p_started'
+            endif),
+         successor <- thisModule.resolveTemp(ws.successor,
+            if((ws.linkType = #finishToStart) or (ws.linkType = #startToStart))
+               then 't_start'
+               else 't_finish'
+            endif)
+         )
+}
+\end{lstlisting}
+
+La commande "resolveTemp" permet d'identifier un élément parmi ceux présents dans les règles de transformations.
